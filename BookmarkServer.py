@@ -74,7 +74,7 @@ out_cookie['bearname'] = "Smokey Bear"
 out_cookie['bearname']['max-age'] = 600
 out_cookie['bearname']['httponly'] = True
 
-import os
+
 import threading
 from socketserver import ThreadingMixIn
 
@@ -164,5 +164,5 @@ class Shortener(http.server.BaseHTTPRequestHandler):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))
     server_address = ('', port)
-    httpd = http.server.HTTPServer(server_address, Shortener)
+    httpd = ThreadHTTPServer(server_address, Shortener)
     httpd.serve_forever()
